@@ -1,0 +1,9 @@
+nom,module,statut,duree_secondes
+Connexion valide,Authentification,pass,2.4
+Connexion mot de passe erroné,Authentification,pass,1.9
+Ajout au panier,Panier,fail,abc
+Paiement par carte,Paiement,pass,4.8
+Recherche de produit,Recherche,fail,2.2
+Déconnexion,Authentification,pass,0.8
+Paiement PayPal,Paiement,pass,5.3
+Modification du panier,Panier,skip,0.0
