@@ -1,0 +1,12 @@
+{
+  "campagne": "Régression v1.2",
+  "date": "2026-10-20",
+  "tests": [
+    {"nom": "Connexion valide", "module": "Authentification", "statut": "pass", "duree_secondes": 2.4},
+    {"nom": "Connexion mot de passe erroné", "module": "Authentification", "statut": "pass", "duree_secondes": 1.9},
+    {"nom": "Ajout au panier", "module": "Panier", "statut": "fail", "duree_secondes": 3.1},
+    {"nom": "Paiement par carte", "module": "Paiement", "statut": "pass", "duree_secondes": 4.8},
+    {"nom": "Recherche de produit", "module": "Recherche", "statut": "fail", "duree_secondes": 2.2},
+    {"nom": "Déconnexion", "module": "Authentification", "statut": "pass", "duree_secondes": 0.8}
+  ]
+}

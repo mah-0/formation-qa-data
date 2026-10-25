@@ -1,0 +1,9 @@
+{
+  "campagne": "Régression v1.2",
+  "total": 6,
+  "reussis": 4,
+  "echecs": [
+    "Ajout au panier",
+    "Recherche de produit"
+  ]
+}
