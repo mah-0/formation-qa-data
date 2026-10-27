@@ -1,4 +1,4 @@
-# Formation QA Automatisation + Données
+# Version A
 
 Journal d'apprentissage et projets de ma formation.
 
