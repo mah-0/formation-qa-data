@@ -1,4 +1,4 @@
-# Version A
+# Version B
 
 Journal d'apprentissage et projets de ma formation.
 
