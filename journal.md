@@ -4,3 +4,8 @@
 - Ce que j'ai fait :
 - Ce que j'ai compris :
 - Ce qui m'a bloqué :
+
+## Jour 6
+- Ce que j'ai fait :
+- Ce que j'ai compris :
+- Ce qui m'a bloqué :
