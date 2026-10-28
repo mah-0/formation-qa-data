@@ -63,6 +63,6 @@ def test_panier_avec_deux_produits(page: Page):
 def test_deconnexion(page: Page):
     se_connecter(page, "standard_user", "secret_sauce")
     page.get_by_role("button", name="Open Menu").click()
-    page.get_by_role("link", name="Logout").click()
+    page.locator("#logout_sidebar_link").click()
     expect(page.get_by_role("button", name="Login")).to_be_visible()
     expect(page).to_have_url(f"{URL}/")
