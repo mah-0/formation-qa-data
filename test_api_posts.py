@@ -1,4 +1,6 @@
 # test_api_posts.py - Tests automatisés de l'API JSONPlaceholder
+import pytest
+pytestmark = pytest.mark.api
 
 import pytest
 
