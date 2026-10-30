@@ -1,4 +1,6 @@
 # test_ui_connexion.py - Tests de saucedemo.com
+import pytest
+pytestmark = pytest.mark.ui
 
 import pytest
 from playwright.sync_api import Page, expect
@@ -43,26 +45,24 @@ def test_utilisateur_bloque(page: Page):
     expect(page.locator("[data-test='error']")).to_contain_text("locked out")
 
 
-def test_ajout_au_panier(page: Page):
-    se_connecter(page, "standard_user", "secret_sauce")
-    page.locator("[data-test='add-to-cart-sauce-labs-backpack']").click()
-    expect(page.locator(".shopping_cart_badge")).to_have_text("1")
-    expect(page.locator("[data-test='remove-sauce-labs-backpack']")).to_be_visible()
 
 
-def test_panier_avec_deux_produits(page: Page):
-    se_connecter(page, "standard_user", "secret_sauce")
-    page.locator("[data-test='add-to-cart-sauce-labs-backpack']").click()
-    page.locator("[data-test='add-to-cart-sauce-labs-bike-light']").click()
-    expect(page.locator(".shopping_cart_badge")).to_have_text("2")
-    page.locator("[data-test='shopping-cart-link']").click()
-    expect(page).to_have_url(f"{URL}/cart.html")
-    expect(page.locator(".cart_item")).to_have_count(2)
+def test_ajout_au_panier(page_connectee: Page):
+    page_connectee.locator("[data-test='add-to-cart-sauce-labs-backpack']").click()
+    expect(page_connectee.locator(".shopping_cart_badge")).to_have_text("1")
+    expect(page_connectee.locator("[data-test='remove-sauce-labs-backpack']")).to_be_visible()
+
+def test_panier_avec_deux_produits(page_connectee: Page):
+    page_connectee.locator("[data-test='add-to-cart-sauce-labs-backpack']").click()
+    page_connectee.locator("[data-test='add-to-cart-sauce-labs-bike-light']").click()
+    expect(page_connectee.locator(".shopping_cart_badge")).to_have_text("2")
+    page_connectee.locator("[data-test='shopping-cart-link']").click()
+    expect(page_connectee).to_have_url(f"{URL}/cart.html")
+    expect(page_connectee.locator(".cart_item")).to_have_count(2)
 
 
-def test_deconnexion(page: Page):
-    se_connecter(page, "standard_user", "secret_sauce")
-    page.get_by_role("button", name="Open Menu").click()
-    page.locator("#logout_sidebar_link").click()
-    expect(page.get_by_role("button", name="Login")).to_be_visible()
-    expect(page).to_have_url(f"{URL}/")
+def test_deconnexion(page_connectee: Page):
+    page_connectee.get_by_role("button", name="Open Menu").click()
+    page_connectee.locator("#logout_sidebar_link").click()
+    expect(page_connectee.get_by_role("button", name="Login")).to_be_visible()
+    expect(page_connectee).to_have_url(f"{URL}/")

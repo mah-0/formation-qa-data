@@ -1,5 +1,7 @@
 # test_lecteur_json.py - Tests de la lecture JSON
 
+import pytest
+pytestmark = pytest.mark.unitaire
 import json
 
 from lecteur_json import charger_campagne
