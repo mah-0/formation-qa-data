@@ -1,5 +1,6 @@
 # test_analyse.py - Tests automatisés des fonctions d'analyse
 import pytest
+
 pytestmark = pytest.mark.unitaire
 
 from analyse import (
@@ -8,6 +9,8 @@ from analyse import (
     duree_moyenne,
     echecs_par_module,
     trouver_test_le_plus_lent,
+    modules_en_echec,
+    classer_par_duree
 )
 
 
@@ -67,3 +70,29 @@ def test_statut_en_majuscules():
         {"nom": "A", "module": "Auth", "statut": "PASS", "duree_secondes": 1.0},
     ]
     assert taux_reussite(resultats) == 100.0   
+
+
+def test_modules_en_echec():
+    resultats = [
+        {"nom": "A", "module": "Panier", "statut": "fail", "duree_secondes": 1.0},
+        {"nom": "B", "module": "Auth", "statut": "fail", "duree_secondes": 1.0},
+        {"nom": "C", "module": "Panier", "statut": "fail", "duree_secondes": 1.0},
+        {"nom": "D", "module": "Paiement", "statut": "pass", "duree_secondes": 1.0},
+    ]
+    assert modules_en_echec(resultats) == ["Auth", "Panier"]
+
+
+def test_modules_en_echec_aucun_echec():
+    resultats = [
+        {"nom": "A", "module": "Auth", "statut": "pass", "duree_secondes": 1.0},
+    ]
+    assert modules_en_echec(resultats) == []
+
+
+def test_classer_par_duree():
+    resultats = [
+        {"nom": "A", "module": "X", "statut": "pass", "duree_secondes": 1.0},
+        {"nom": "B", "module": "X", "statut": "pass", "duree_secondes": 5.0},
+        {"nom": "C", "module": "X", "statut": "pass", "duree_secondes": 3.0},
+    ]
+    assert classer_par_duree(resultats) == ["B", "C", "A"]    
